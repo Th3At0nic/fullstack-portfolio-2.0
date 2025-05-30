@@ -45,9 +45,9 @@ const AddBlog = () => {
     const res = await createBlog(formData);
 
     if (res?.data?.success) {
-      toast.success("Blog Post Successful", { duration: 3000 });
+      toast.success("Blog Post Successful", { duration: 4000 });
     } else if (res?.error) {
-      toast.error((res?.error as TError).data.message, { duration: 3000 });
+      toast.error((res?.error as TError).data.message, { duration: 4000 });
     } else toast.error("Something went wrong");
   };
 

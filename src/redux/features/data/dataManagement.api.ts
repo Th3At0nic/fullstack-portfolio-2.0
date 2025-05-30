@@ -9,7 +9,15 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    addCertificate: builder.mutation({
+      query: (data) => ({
+        url: "/courses/add-certificate",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useCreateBlogMutation } = dataManagementApi;
+export const { useCreateBlogMutation, useAddCertificateMutation } =
+  dataManagementApi;
