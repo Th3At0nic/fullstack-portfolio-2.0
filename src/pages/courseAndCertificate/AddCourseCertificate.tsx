@@ -48,7 +48,7 @@ const AddCourseCertificate = () => {
     <Row>
       <Col span={24}>
         <PHForm onSubmit={onSubmit}>
-          <Divider>Blog</Divider>
+          <Divider>Add Course & Certificate</Divider>
           <Row gutter={10}>
             <Col span={24} lg={24} md={12}>
               <PHInput type="text" name="title" label="Title" />

@@ -16,8 +16,18 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    addExperience: builder.mutation({
+      query: (data) => ({
+        url: "/experiences/add-experience",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useCreateBlogMutation, useAddCertificateMutation } =
-  dataManagementApi;
+export const {
+  useCreateBlogMutation,
+  useAddCertificateMutation,
+  useAddExperienceMutation,
+} = dataManagementApi;
