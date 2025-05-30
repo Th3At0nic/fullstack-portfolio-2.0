@@ -7,7 +7,7 @@ import PHSelect from "../../components/form/PHSelect";
 import { toast } from "sonner";
 import { TError } from "../../types";
 
-export const courseDurations = [
+const courseDurations = [
   "1 week",
   "2 weeks",
   "3 weeks",
