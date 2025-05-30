@@ -38,7 +38,7 @@ export const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   }, [shouldLogout, dispatch]);
 
   if (!token || shouldLogout) {
-    return <Navigate to="/login" replace={true} />;
+    return <Navigate to="/auth/login" replace={true} />;
   }
   return children;
 };

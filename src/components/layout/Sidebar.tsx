@@ -7,7 +7,7 @@ import {
 import { verifyToken } from "../../utils/verifyToken";
 import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import { adminPaths } from "../../routes/adminRoutes";
-import { userPaths } from "../../routes/userRoutes";
+// import { userPaths } from "../../routes/userRoutes";
 
 const { Sider } = Layout;
 
@@ -33,9 +33,9 @@ export const Sidebar = () => {
     case userRole.ADMIN:
       sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
       break;
-    case userRole.USER:
-      sidebarItems = sidebarItemsGenerator(userPaths, userRole.USER);
-      break;
+    // case userRole.USER:
+    //   sidebarItems = sidebarItemsGenerator(userPaths, userRole.USER);
+    //   break;
 
     default:
       break;
@@ -57,7 +57,7 @@ export const Sidebar = () => {
           margin: "18px auto 18px",
         }}
       >
-        <h1>CarNexa</h1>
+        <h1>Portfolio Dashboard</h1>
       </div>
 
       {/* Sidebar Menu - Takes Remaining Space */}

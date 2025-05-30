@@ -1,9 +1,9 @@
-import UserDashboard from "../pages/user/UserDashboard";
+// import UserDashboard from "../pages/user/UserDashboard";
 
-export const userPaths = [
-  {
-    name: "Dashboard",
-    path: "dashboard",
-    element: <UserDashboard />,
-  },
-];
+// export const userPaths = [
+//   {
+//     name: "Dashboard",
+//     path: "dashboard",
+//     element: <UserDashboard />,
+//   },
+// ];
