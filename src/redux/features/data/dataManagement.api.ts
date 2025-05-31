@@ -30,6 +30,13 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    addResume: builder.mutation({
+      query: (data) => ({
+        url: "/resume/add-resume",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +45,5 @@ export const {
   useAddCertificateMutation,
   useAddExperienceMutation,
   useAddProjectMutation,
+  useAddResumeMutation,
 } = dataManagementApi;
