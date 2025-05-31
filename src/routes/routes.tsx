@@ -9,6 +9,15 @@ import { adminPaths } from "./adminRoutes";
 
 export const router = createBrowserRouter([
   {
+    path: "/",
+    element: (
+      <ProtectedRoute role="admin">
+        <App />
+      </ProtectedRoute>
+    ),
+    children: routesGenerator(adminPaths),
+  },
+  {
     path: "/admin",
     element: (
       <ProtectedRoute role="admin">

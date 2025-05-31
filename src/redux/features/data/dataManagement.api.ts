@@ -23,6 +23,13 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    addProject: builder.mutation({
+      query: (data) => ({
+        url: "/projects/add-project",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -30,4 +37,5 @@ export const {
   useCreateBlogMutation,
   useAddCertificateMutation,
   useAddExperienceMutation,
+  useAddProjectMutation,
 } = dataManagementApi;

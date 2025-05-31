@@ -21,7 +21,7 @@ const currentlyWorkingItems = [
   { name: "No", value: false },
 ];
 
-const AddCourseCertificate = () => {
+const AddExperience = () => {
   const [addExperience] = useAddExperienceMutation();
 
   const employmentTypeOptions = employmentTypes?.map((item) => ({
@@ -93,4 +93,4 @@ const AddCourseCertificate = () => {
   );
 };
 
-export default AddCourseCertificate;
+export default AddExperience;
