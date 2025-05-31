@@ -19,6 +19,7 @@ const technologies = [
   "Node.js",
   "Express.js",
   "MongoDB",
+  "Mongoose",
   "PostgreSQL",
   "Firebase",
   "Redux Toolkit",
