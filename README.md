@@ -4,6 +4,8 @@ A full-featured portfolio dashboard built with a modern fullstack tech stack. Th
 
 ---
 
+## 🔗 You can check out the **live dashboard** [here](https://my-fullstack-portfolio-dashboard.vercel.app/).
+
 ## ✨ Features
 
 - 🔐 **Admin Login** with JWT Auth (access + refresh token)
