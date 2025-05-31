@@ -37,6 +37,13 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    addSkill: builder.mutation({
+      query: (data) => ({
+        url: "/skills/add-skill",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -46,4 +53,5 @@ export const {
   useAddExperienceMutation,
   useAddProjectMutation,
   useAddResumeMutation,
+  useAddSkillMutation,
 } = dataManagementApi;
