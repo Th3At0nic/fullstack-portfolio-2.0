@@ -57,7 +57,7 @@ const AddExperience = () => {
               <PHInput type="text" name="company" label="Company" />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="location" label="Location" />
+              <PHInput type="text" name="location" label="Location - (e.g. Dhaka,Bangladesh)" />
             </Col>
             <Col span={24} lg={8} md={12}>
               <PHSelect
@@ -68,7 +68,7 @@ const AddExperience = () => {
             </Col>
 
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="startDate" label="Start Date" />
+              <PHInput type="text" name="startDate" label="Start Date - (e.g. January 2002)" />
             </Col>
 
             <Col span={24} lg={8} md={12}>
@@ -80,7 +80,7 @@ const AddExperience = () => {
             </Col>
 
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="endDate" label="End Date" />
+              <PHInput type="text" name="endDate" label="End Date - (e.g. January 2002)" />
             </Col>
           </Row>
 

@@ -54,7 +54,7 @@ const AddCourseCertificate = () => {
               <PHInput type="text" name="title" label="Title" />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="platform" label="Platform" />
+              <PHInput type="text" name="platform" label="Platform - (e.g. Udemy/Programming Hero)" />
             </Col>
             <Col span={24} lg={8} md={12}>
               <PHSelect
@@ -65,7 +65,11 @@ const AddCourseCertificate = () => {
             </Col>
 
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="completedAt" label="Completed At" />
+              <PHInput
+                type="text"
+                name="completedAt"
+                label="Completed At - (e.g. June 2002)"
+              />
             </Col>
 
             <Col span={24} lg={24} md={12}>
