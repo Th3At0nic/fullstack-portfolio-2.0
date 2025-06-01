@@ -26,6 +26,8 @@ const technologies = [
   "Zod",
   "Prisma",
   "JWT",
+  "HTML",
+  "CSS",
 ];
 
 const deploymentPlatforms = ["Vercel", "Netlify", "Render", "Railway", "Other"];
