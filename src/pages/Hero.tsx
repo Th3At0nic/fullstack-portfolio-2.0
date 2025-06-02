@@ -24,7 +24,7 @@ const Hero = () => {
   }, [bioList.length]);
 
   return (
-    <div className="min-h-screen  text-gray-800 py-10 px-4 flex flex-col items-center">
+    <div className="text-gray-800 flex flex-col items-center" style={{margin: "5% 0"}}>
       {/* Profile Image */}
       <motion.img
         src={user?.avatarUrl}
