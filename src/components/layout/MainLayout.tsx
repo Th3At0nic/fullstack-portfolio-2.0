@@ -28,9 +28,8 @@ const App: React.FC = () => {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 24px",
-          backgroundColor: "darkblue",
-          // backdropFilter: "blur(10px)", // ✅ Blur
-          // backgroundColor: "rgba(255, 255, 255, 0.1)", // ✅ Semi-transparent
+          backgroundColor: "darkblue", // ✅ Blur
+          // backgroundColor: "rgba(255, 255, 300, 1)", // ✅ Semi-transparent
           // WebkitBackdropFilter: "blur(10px)", // ✅ Safari support
           borderBottom: "1px solid rgba(255, 255, 255, 0.2)", // Optional border
         }}

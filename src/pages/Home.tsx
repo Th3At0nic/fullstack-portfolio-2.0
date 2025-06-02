@@ -1,4 +1,5 @@
 import Blogs from "./Blogs";
+import Hero from "./Hero";
 import Projects from "./Projects";
 import Skills from "./Skills";
 
@@ -6,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <section id="hero">
-        <h1>Welcome to My Portfolio</h1>
+        <Hero />
       </section>
 
       <section id="skills">
