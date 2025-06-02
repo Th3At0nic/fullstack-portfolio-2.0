@@ -64,7 +64,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="max-w-2xl text-center text-base md:text-lg text-gray-600 whitespace-pre-line mt-4"
+        className="max-w-6xl text-justify text-base md:text-lg text-gray-600 mt-4"
       >
         {user?.description}
       </motion.p>
