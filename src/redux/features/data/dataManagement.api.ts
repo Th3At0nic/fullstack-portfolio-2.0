@@ -34,11 +34,10 @@ const dataManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
-    addProject: builder.mutation({
-      query: (data) => ({
-        url: "/projects/add-project",
-        method: "POST",
-        body: data,
+    getProjects: builder.query({
+      query: () => ({
+        url: "/projects",
+        method: "GET",
       }),
     }),
     addResume: builder.mutation({
@@ -62,4 +61,5 @@ export const {
   useGetResumeQuery,
   useGetProfileDataQuery,
   useGetSkillsQuery,
+  useGetProjectsQuery,
 } = dataManagementApi;
