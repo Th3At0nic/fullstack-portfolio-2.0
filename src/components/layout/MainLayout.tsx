@@ -1,61 +1,79 @@
-import { Button, Layout, theme } from "antd";
-import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import { useAppDispatch } from "../../redux/hooks";
-import { logoutUser } from "../../redux/features/auth/authSlice";
+import React from "react";
+import { Breadcrumb, Layout, Menu, theme } from "antd";
+import myLogo from "../../assets/myLogo1.png";
+import { Link, Outlet } from "react-router-dom";
+import { homePaths } from "../../routes/homeRoutes";
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
-const MainLayout = () => {
+const navbarItems = homePaths.map((item) => ({
+  key: item.name,
+  label: <Link to={item.path}>{item.name}</Link>,
+}));
+
+const App: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const dispatch = useAppDispatch();
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
-
   return (
-    <Layout style={{ height: "100%" }}>
-      <Sidebar />
-      <Layout>
-        <Header
+    <Layout>
+      <Header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 10,
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 24px",
+          backgroundColor: "darkblue",
+          // backdropFilter: "blur(10px)", // ✅ Blur
+          // backgroundColor: "rgba(255, 255, 255, 0.1)", // ✅ Semi-transparent
+          // WebkitBackdropFilter: "blur(10px)", // ✅ Safari support
+          borderBottom: "1px solid rgba(255, 255, 255, 0.2)", // Optional border
+        }}
+      >
+        {/* 🔵 Left: Logo or Icon */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <img src={myLogo} alt="Logo" />
+        </div>
+
+        {/* 🔴 Right: Nav Items */}
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          items={navbarItems}
           style={{
-            padding: 0,
-            display: "flex",
-            alignItems: "center",
+            background: "transparent", // ✅ No background
+            flex: 1,
+            justifyContent: "end",
+          }}
+        />
+      </Header>
+
+      <Content style={{ padding: "0 48px" }}>
+        <Breadcrumb
+          style={{ margin: "22px 0" }}
+          // items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
+        />
+        <div
+          style={{
+            padding: 24,
+            minHeight: 380,
+            background: colorBgContainer,
+            borderRadius: borderRadiusLG,
           }}
         >
-          <Button
-            onClick={handleLogout}
-            style={{
-              margin: "auto 15px auto auto",
-              backgroundColor: "red",
-              color: "white",
-              border: "0",
-              fontWeight: "800",
-            }}
-          >
-            Logout
-          </Button>
-        </Header>
-        <Content style={{ margin: "24px 16px 0", minHeight: "100vh" }}>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            <Outlet />
-          </div>
-        </Content>
-      </Layout>
+          <Outlet />
+        </div>
+      </Content>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+      </Footer>
     </Layout>
   );
 };
 
-export default MainLayout;
+export default App;
