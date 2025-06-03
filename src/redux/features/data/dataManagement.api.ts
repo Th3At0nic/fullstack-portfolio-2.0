@@ -1,5 +1,10 @@
 import { TResponseRedux } from "../../../types";
-import { TBlog, TCertificate, TExperience, TProject } from "../../../types/data.type";
+import {
+  TBlog,
+  TCertificate,
+  TExperience,
+  TProject,
+} from "../../../types/data.type";
 import { baseApi } from "../../api/baseApi";
 
 const dataManagementApi = baseApi.injectEndpoints({
@@ -10,12 +15,24 @@ const dataManagementApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    getBlog: builder.query({
+    getBlogs: builder.query({
       query: () => ({
         url: "/blogs",
         method: "GET",
       }),
       transformResponse: (response: TResponseRedux<TBlog[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
+    }),
+    getASingleBlog: builder.query({
+      query: (blogId: string) => ({
+        url: `/blogs/${blogId}`,
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TBlog>) => {
         return {
           data: response?.data,
           meta: response?.meta,
@@ -74,7 +91,8 @@ const dataManagementApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetBlogQuery,
+  useGetBlogsQuery,
+  useGetASingleBlogQuery,
   useGetResumeQuery,
   useGetProfileDataQuery,
   useGetSkillsQuery,

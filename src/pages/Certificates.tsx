@@ -1,8 +1,9 @@
 import { useGetCertificatesQuery } from "../redux/features/data/dataManagement.api";
-import { Card, Col, Modal, Row, Typography, Button, Spin } from "antd";
+import { Card, Col, Modal, Row, Typography, Button,  } from "antd";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
+import LoadingSpinner from "../utils/LoadingSpinner";
 
 const { Title, Text } = Typography;
 
@@ -17,17 +18,13 @@ const Certificates = () => {
   }>(null);
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Spin size="large" />
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (
     <div
-      className="rounded-2xl max-w-7xl  text-gray-600"
-      style={{ margin: "auto" }}
+      className="rounded-2xl max-w-7xl "
+      style={{ margin: "0 auto 10% auto" }}
     >
       <div style={{ margin: "10% 0 3%" }}>
         {/* Section Heading */}

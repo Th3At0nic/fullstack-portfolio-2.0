@@ -1,4 +1,4 @@
-import { useGetBlogQuery } from "../redux/features/data/dataManagement.api";
+import { useGetBlogsQuery } from "../redux/features/data/dataManagement.api";
 import { Card, Col, Row, Typography, Button, Tag, Spin } from "antd";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -7,7 +7,7 @@ import { BookOpenText } from "lucide-react";
 const { Title, Paragraph } = Typography;
 
 const Blogs = () => {
-  const { data: blogsData, isLoading } = useGetBlogQuery(undefined);
+  const { data: blogsData, isLoading } = useGetBlogsQuery(undefined);
 
   const blogs = blogsData?.data || [];
 
@@ -68,7 +68,10 @@ const Blogs = () => {
 
               <div style={{ textAlign: "right", marginTop: "auto" }}>
                 <Link to={`/blogs/${blog._id}`}>
-                  <Button type="primary"><BookOpenText size={16}/>Read More</Button>
+                  <Button type="primary">
+                    <BookOpenText size={16} />
+                    Read More
+                  </Button>
                 </Link>
               </div>
             </Card>

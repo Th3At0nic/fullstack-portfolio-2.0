@@ -139,13 +139,17 @@ const Hero = () => {
           },
         }}
       >
-        <iframe
-          src={getDrivePreviewUrl(resume?.data[0]?.resumeUrl)}
-          width="100%"
-          height="100%"
-          style={{ border: "none", padding: "2%" }}
-          className="rounded-md"
-        />
+        {resume?.data[0]?.resumeUrl ? (
+          <iframe
+            src={getDrivePreviewUrl(resume?.data[0]?.resumeUrl)}
+            width="100%"
+            height="100%"
+            style={{ border: "none", padding: "2%" }}
+            className="rounded-md"
+          />
+        ) : (
+          <p className="text-red-500">Resume preview is not available.</p>
+        )}
       </Modal>
     </div>
   );
