@@ -31,10 +31,7 @@ const Skills = () => {
   });
 
   return (
-    <div
-      className="rounded-2xl max-w-7xl  text-gray-600"
-      style={{ margin: "auto" }}
-    >
+    <div className="rounded-2xl max-w-7xl" style={{ margin: "auto" }}>
       {/* Section Heading */}
       <motion.h2
         className="group relative text-3xl md:text-4xl font-bold text-center mb-10 cursor-pointer transition-all text-blue-800"
@@ -44,7 +41,7 @@ const Skills = () => {
         <span className="absolute left-1/2 bottom-0 h-[4px] w-0 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded" />
       </motion.h2>
 
-      <div style={{margin:"2% 0"}}>
+      <div style={{ margin: "2% 0" }}>
         {/* Categories */}
         {Object.entries(groupedSkills).map(([category, skills]) => (
           <div key={category} style={{ marginBottom: "3%" }}>

@@ -107,12 +107,7 @@ const App: React.FC = () => {
           <Outlet />
         </div>
       </Content>
-      {/* <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        Design & built by Tajmirul Islam
-53
-14
-      </Footer> */}
+
       <Footer style={{ textAlign: "center", padding: "20px 0" }}>
         <div>
           Designed & Built by <strong>Md Rahatul Islam</strong>

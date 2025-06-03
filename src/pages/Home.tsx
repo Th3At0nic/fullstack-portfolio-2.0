@@ -1,5 +1,7 @@
 import Blogs from "./Blogs";
 import Certificates from "./Certificates";
+import Education from "./Education";
+import Experiences from "./Experiences";
 import Hero from "./Hero";
 import Projects from "./Projects";
 import Skills from "./Skills";
@@ -13,6 +15,14 @@ const Home = () => {
 
       <section id="skills">
         <Skills />
+      </section>
+
+      <section id="education">
+        <Education />
+      </section>
+
+      <section id="experience">
+        <Experiences />
       </section>
 
       <section id="projects">

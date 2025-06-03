@@ -39,3 +39,32 @@ export type TCertificate = {
   updatedAt: string;
   __v: number;
 };
+
+export type TEducation = {
+  degree: string;
+  institution: string;
+  boardOrUniversity?: string;
+  location: string;
+  duration: string;
+  type: "University" | "College" | "School";
+};
+
+export type TExperience = {
+  _id: string;
+  title: string;
+  company: string;
+  location: string;
+  employmentType:
+    | "Full-time"
+    | "Part-time"
+    | "Internship"
+    | "Contract"
+    | "Freelance"
+    | "Remote";
+  startDate: string; // Example: "August 2021"
+  endDate?: string; // Optional if `currentlyWorking` is true
+  currentlyWorking: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v?: number;
+};

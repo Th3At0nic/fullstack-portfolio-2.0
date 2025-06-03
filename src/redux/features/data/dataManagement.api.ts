@@ -1,5 +1,5 @@
 import { TResponseRedux } from "../../../types";
-import { TBlog, TCertificate, TProject } from "../../../types/data.type";
+import { TBlog, TCertificate, TExperience, TProject } from "../../../types/data.type";
 import { baseApi } from "../../api/baseApi";
 
 const dataManagementApi = baseApi.injectEndpoints({
@@ -58,6 +58,18 @@ const dataManagementApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getExperiences: builder.query({
+      query: () => ({
+        url: "/experiences",
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TExperience[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
+    }),
   }),
 });
 
@@ -68,4 +80,5 @@ export const {
   useGetSkillsQuery,
   useGetProjectsQuery,
   useGetCertificatesQuery,
+  useGetExperiencesQuery,
 } = dataManagementApi;

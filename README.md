@@ -1,59 +1,51 @@
-# Fullstack Portfolio Dashboard
+# 🚀 Fullstack Portfolio – Frontend
 
-A full-featured portfolio dashboard built with a modern fullstack tech stack. This dashboard allows me to manage and update all portfolio sections dynamically — including projects, blogs, skills, experience, resume, certificates, and more — with secure authentication and role-based access control.
-
----
-
-## 🔗 You can check out the **live dashboard** [here](https://my-fullstack-portfolio-dashboard.vercel.app/).
-
-## ✨ Features
-
-- 🔐 **Admin Login** with JWT Auth (access + refresh token)
-- 📄 **Dynamic Bio, Description, Avatar, and Location**
-- 🧠 **Skills** — Add, edit, and delete technologies I’ve mastered
-- 🧰 **Projects** — Add projects with multi-tech stack selection
-- ✍️ **Blogs** — Write and manage blogs with category support
-- 💼 **Experience** — Add current/past work with time ranges
-- 🎓 **Courses & Certificates** — Add certified learning milestones
-- 📃 **Resume** — Upload and manage my current CV
-- 📊 **Responsive UI** — Built with Ant Design and Tailwind CSS
-- 🔄 **Realtime Updates** — All changes reflected instantly
+This is the **Frontend** of my personal **Fullstack Portfolio** project, built to showcase my skills, achievements, and experience as a full-stack web developer. It includes a professional UI, responsive design, certificate viewer, and much more.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-
-- React + Vite
-- TypeScript
-- Ant Design
-- Tailwind CSS
-- React Hook Form + Zod
-- Axios + JWT Auth
-
-### Backend
-
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-- Zod for validation
-- Cookie-based Auth (Refresh Token Strategy)
+| Purpose          | Technology                    |
+| ---------------- | ----------------------------- |
+| Framework        | **React** + **TypeScript**    |
+| UI Library       | **Ant Design (antd)**         |
+| Animation        | **Framer Motion**             |
+| State Management | **Redux Toolkit** + RTK Query |
+| Routing          | **React Router DOM**          |
+| Styling          | **Tailwind CSS**              |
+| Icons            | **Lucide-react**, Ant icons   |
+| Image Hosting    | **Cloudinary**                |
+| Database         | **MongoDB**                |
 
 ---
 
-## 🔒 Authentication
+## 📦 Features
 
-- Secure login with encrypted password storage
-- Refresh token stored in `HttpOnly` cookies
-- Access token sent in headers for authorized requests
-- Role-based (Admin-only) dashboard access
+- 🎨 Fully responsive, clean and modern UI
+- ⚙️ Reusable layout using Ant Design's `Layout`
+- 🛡️ Type-safe Redux code with custom TypeScript types
+- 🚀 Deployed-ready structure
+
+---
 
 ---
 
-## 🧪 API Testing
+## 🖼️ Live Preview
 
-- All backend APIs are tested using **Postman**
-- You can register and login, and manage each entity via RESTful APIs
+> (🔗 Add link once deployed, e.g., Vercel or Netlify)
 
 ---
+
+## 🧑‍💻 Author
+
+**Md Rahatul Islam**  
+💼 Full Stack Developer  
+📧 islammdrahatul@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-username)
+
+---
+
+## 📜 License
+
+

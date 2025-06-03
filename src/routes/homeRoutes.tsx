@@ -1,5 +1,6 @@
 import Blogs from "../pages/Blogs";
 import Certificates from "../pages/Certificates";
+import Education from "../pages/Education";
 import Experiences from "../pages/Experiences";
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
@@ -7,14 +8,19 @@ import Skills from "../pages/Skills";
 
 export const homePaths = [
   {
-    name: "home",
+    name: "Home",
     path: "/",
     element: <Home />,
   },
   {
-    name: "skills",
+    name: "Skills",
     path: "skills",
     element: <Skills />,
+  },
+  {
+    name: "Education",
+    path: "education",
+    element: <Education />,
   },
   {
     name: "Experiences",
