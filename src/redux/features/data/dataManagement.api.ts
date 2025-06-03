@@ -1,3 +1,5 @@
+import { TResponseRedux } from "../../../types";
+import { TBlog, TCertificate, TProject } from "../../../types/data.type";
 import { baseApi } from "../../api/baseApi";
 
 const dataManagementApi = baseApi.injectEndpoints({
@@ -13,6 +15,12 @@ const dataManagementApi = baseApi.injectEndpoints({
         url: "/blogs",
         method: "GET",
       }),
+      transformResponse: (response: TResponseRedux<TBlog[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
     }),
     getResume: builder.query({
       query: () => ({
@@ -20,32 +28,29 @@ const dataManagementApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    addCertificate: builder.mutation({
-      query: (data) => ({
-        url: "/courses/add-certificate",
-        method: "POST",
-        body: data,
+    getCertificates: builder.query({
+      query: () => ({
+        url: "/courses",
+        method: "GET",
       }),
-    }),
-    addExperience: builder.mutation({
-      query: (data) => ({
-        url: "/experiences/add-experience",
-        method: "POST",
-        body: data,
-      }),
+      transformResponse: (response: TResponseRedux<TCertificate[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
     }),
     getProjects: builder.query({
       query: () => ({
         url: "/projects",
         method: "GET",
       }),
-    }),
-    addResume: builder.mutation({
-      query: (data) => ({
-        url: "/resume/add-resume",
-        method: "POST",
-        body: data,
-      }),
+      transformResponse: (response: TResponseRedux<TProject[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
     }),
     getSkills: builder.query({
       query: () => ({
@@ -62,4 +67,5 @@ export const {
   useGetProfileDataQuery,
   useGetSkillsQuery,
   useGetProjectsQuery,
+  useGetCertificatesQuery,
 } = dataManagementApi;

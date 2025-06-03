@@ -1,7 +1,6 @@
 import { useGetProjectsQuery } from "../redux/features/data/dataManagement.api";
 import { Card, Col, Row, Tag, Typography, Button, Space } from "antd";
 import { GithubOutlined, GlobalOutlined, ApiOutlined } from "@ant-design/icons";
-import { TProject } from "../types/data.type";
 import { motion } from "framer-motion";
 
 const { Title, Paragraph, Text } = Typography;
@@ -16,7 +15,7 @@ const Projects = () => {
       className="rounded-2xl max-w-7xl  text-gray-600"
       style={{ margin: "auto" }}
     >
-      <div style={{margin: "10% 0 3%"}}>
+      <div style={{ margin: "10% 0 3%" }}>
         {/* Section Heading */}
         <motion.h2
           className="group relative text-3xl md:text-4xl font-bold text-center mb-10 cursor-pointer transition-all text-blue-800"
@@ -28,7 +27,7 @@ const Projects = () => {
       </div>
 
       <Row gutter={[24, 24]}>
-        {projects.map((project: TProject) => (
+        {projects.map((project) => (
           <Col key={project._id} xs={24} sm={24} md={12} lg={8} xl={8}>
             <Card
               hoverable

@@ -1,4 +1,5 @@
 import Blogs from "./Blogs";
+import Certificates from "./Certificates";
 import Hero from "./Hero";
 import Projects from "./Projects";
 import Skills from "./Skills";
@@ -20,6 +21,10 @@ const Home = () => {
 
       <section id="blogs">
         <Blogs />
+      </section>
+
+      <section id="courses">
+        <Certificates />
       </section>
 
       {/* <section id="contact">
