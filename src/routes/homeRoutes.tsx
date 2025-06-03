@@ -4,6 +4,7 @@ import Education from "../pages/Education";
 import Experiences from "../pages/Experiences";
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
+import ReadBlog from "../pages/ReadBlog";
 import Skills from "../pages/Skills";
 
 export const homePaths = [
@@ -36,6 +37,10 @@ export const homePaths = [
     name: "Blogs",
     path: "blogs",
     element: <Blogs />,
+  },
+  {
+    path: "blogs/:blogId",
+    element: <ReadBlog />,
   },
   {
     name: "Certificates",

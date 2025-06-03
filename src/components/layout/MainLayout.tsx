@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, theme, Drawer, Button } from "antd";
+import { Layout, Menu, theme, Drawer, Button, MenuProps } from "antd";
 import { MenuOutlined, CloseOutlined, GithubOutlined } from "@ant-design/icons";
 import myLogo from "../../assets/myLogo1.png";
 import { Link, Outlet } from "react-router-dom";
@@ -18,21 +18,23 @@ const App: React.FC = () => {
     setDrawerVisible(!drawerVisible);
   };
 
-  const navbarItems = homePaths.map((item) => ({
-    key: item.name,
-    label: (
-      <Link
-        to={item.path}
-        onClick={() => {
-          if (window.innerWidth < 768) {
-            setDrawerVisible(false); // ✅ Only close if small screen
-          }
-        }}
-      >
-        {item.name}
-      </Link>
-    ),
-  }));
+  const navbarItems: MenuProps["items"] = homePaths
+    .filter((item) => item.name)
+    .map((item) => ({
+      key: item.path,
+      label: (
+        <Link
+          to={item.path}
+          onClick={() => {
+            if (window.innerWidth < 768) {
+              setDrawerVisible(false); // ✅ Only close if small screen
+            }
+          }}
+        >
+          {item.name}
+        </Link>
+      ),
+    }));
 
   return (
     <Layout>
