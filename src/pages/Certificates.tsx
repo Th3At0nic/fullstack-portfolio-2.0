@@ -2,6 +2,7 @@ import { useGetCertificatesQuery } from "../redux/features/data/dataManagement.a
 import { Card, Col, Modal, Row, Typography, Button, Spin } from "antd";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Eye } from "lucide-react";
 
 const { Title, Text } = Typography;
 
@@ -76,6 +77,7 @@ const Certificates = () => {
                       })
                     }
                   >
+                    <Eye size={16} />
                     View Certificate
                   </Button>
                 </div>
@@ -89,7 +91,7 @@ const Certificates = () => {
         open={!!selectedCertificate}
         onCancel={() => setSelectedCertificate(null)}
         footer={null}
-        width={1000}
+        width={900}
         centered
       >
         <img
