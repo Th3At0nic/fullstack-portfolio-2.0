@@ -61,7 +61,7 @@ const Education = () => {
           <span className="absolute left-1/2 bottom-0 h-[4px] w-0 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:left-0 rounded" />
         </motion.h2>
       </div>
-      <Row gutter={[24, 24]}>
+      <Row gutter={[24, 24]} justify={"center"}>
         {educationData.map((edu, index) => (
           <Col xs={24} sm={24} md={12} lg={12} key={index}>
             <motion.div

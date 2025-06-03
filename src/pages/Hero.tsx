@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { Button, Spin } from "antd";
+import { Button, Modal, Spin } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   useGetProfileDataQuery,
   useGetResumeQuery,
 } from "../redux/features/data/dataManagement.api";
+import { Eye, Send, Download } from "lucide-react";
+import { getDownloadLink } from "../utils/getDownloadLink";
+import { getDrivePreviewUrl } from "../utils/getDrivePreviewLink";
 
 const Hero = () => {
   const { data: profileData, isLoading: isProfileDataLoading } =
     useGetProfileDataQuery(undefined);
   const { data: resume } = useGetResumeQuery(undefined);
+
   const [currentBioIndex, setCurrentBioIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const user = profileData?.data?.[0];
   const bioList = user?.bio || [];
@@ -18,7 +23,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBioIndex((prevIndex) => (prevIndex + 1) % bioList.length);
-    }, 3000); // 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [bioList.length]);
@@ -36,7 +41,6 @@ const Hero = () => {
       className="text-gray-800 flex flex-col items-center"
       style={{ margin: "5% 0" }}
     >
-      {/* Profile Image */}
       <motion.img
         src={user?.avatarUrl}
         alt="Profile"
@@ -46,7 +50,6 @@ const Hero = () => {
         className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover border-4 border-blue-800 shadow-xl mb-6"
       />
 
-      {/* Name */}
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -56,7 +59,6 @@ const Hero = () => {
         {user?.name}
       </motion.h1>
 
-      {/* Bio (rotating) */}
       <AnimatePresence mode="wait">
         <motion.p
           key={bioList[currentBioIndex]}
@@ -70,7 +72,6 @@ const Hero = () => {
         </motion.p>
       </AnimatePresence>
 
-      {/* Description */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -80,34 +81,72 @@ const Hero = () => {
         {user?.description}
       </motion.p>
 
-      {/* Buttons */}
       <div
         className="flex flex-col sm:flex-row gap-4"
         style={{ margin: "15px 0" }}
       >
         {resume?.data[0]?.resumeUrl && (
-          <Button
-            type="primary"
-            className="bg-blue-800 hover:bg-blue-700 border-none text-white px-6 py-2 rounded-md"
-            onClick={() =>
-              window.open(
-                resume.data[0].resumeUrl,
-                "_blank",
-                "noopener,noreferrer"
-              )
-            }
-          >
-            View Resume
-          </Button>
+          <>
+            <Button
+              type="primary"
+              className="bg-blue-800 hover:bg-blue-700 border-none text-white px-6 py-2 rounded-md"
+              onClick={() => {
+                setIsModalOpen(true);
+                getDrivePreviewUrl(resume?.data[0]?.resumeUrl);
+              }}
+            >
+              <Eye size={16} /> View Resume
+            </Button>
+
+            <Button
+              type="default"
+              className="border border-blue-800 text-blue-800 px-6 py-2 rounded-md hover:bg-blue-50"
+              onClick={() => {
+                const url = getDownloadLink(resume?.data[0]?.resumeUrl);
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", "resume.pdf");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              <Download size={16} />
+              Download Resume
+            </Button>
+          </>
         )}
 
         <Button
           type="default"
           className="border border-blue-800 text-blue-800 px-6 py-2 rounded-md hover:bg-blue-50"
         >
-          Contact Me
+          <Send size={16} /> Contact Me
         </Button>
       </div>
+
+      {/* Resume Modal */}
+      <Modal
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={null}
+        width={1000}
+        centered
+        styles={{
+          body: {
+            padding: 0,
+            height: "80vh",
+          },
+        }}
+      >
+        <iframe
+          src={getDrivePreviewUrl(resume?.data[0]?.resumeUrl)}
+          width="100%"
+          height="100%"
+          style={{ border: "none", padding: "2%" }}
+          className="rounded-md"
+        />
+      </Modal>
     </div>
   );
 };

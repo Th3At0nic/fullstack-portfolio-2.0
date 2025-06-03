@@ -16,7 +16,7 @@ This is the **Frontend** of my personal **Fullstack Portfolio** project, built t
 | Styling          | **Tailwind CSS**              |
 | Icons            | **Lucide-react**, Ant icons   |
 | Image Hosting    | **Cloudinary**                |
-| Database         | **MongoDB**                |
+| Database         | **MongoDB**                   |
 
 ---
 
@@ -42,10 +42,6 @@ This is the **Frontend** of my personal **Fullstack Portfolio** project, built t
 **Md Rahatul Islam**  
 💼 Full Stack Developer  
 📧 islammdrahatul@gmail.com  
-🔗 [LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-username)
+🔗 [LinkedIn](https://www.linkedin.com/in/mdrahatulislam/)
 
 ---
-
-## 📜 License
-
-
