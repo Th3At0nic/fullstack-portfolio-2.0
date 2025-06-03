@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Menu, theme, Drawer, Button } from "antd";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { MenuOutlined, CloseOutlined, GithubOutlined } from "@ant-design/icons";
 import myLogo from "../../assets/myLogo1.png";
 import { Link, Outlet } from "react-router-dom";
 import { homePaths } from "../../routes/homeRoutes";
@@ -83,7 +83,6 @@ const App: React.FC = () => {
           />
         </div>
       </Header>
-
       {/* Mobile Drawer */}
       <Drawer
         title="Navigation"
@@ -95,7 +94,6 @@ const App: React.FC = () => {
       >
         <Menu mode="vertical" items={navbarItems} />
       </Drawer>
-
       {/* Main Content */}
       <Content>
         <div
@@ -109,9 +107,32 @@ const App: React.FC = () => {
           <Outlet />
         </div>
       </Content>
-
-      <Footer style={{ textAlign: "center" }}>
+      {/* <Footer style={{ textAlign: "center" }}>
         Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        Design & built by Tajmirul Islam
+53
+14
+      </Footer> */}
+      <Footer style={{ textAlign: "center", padding: "20px 0" }}>
+        <div>
+          Designed & Built by <strong>Md Rahatul Islam</strong>
+        </div>
+        <div style={{ marginTop: 4 }}>
+          © {new Date().getFullYear()} Md Rahatul Islam. All rights reserved.
+        </div>
+        <a
+          href="https://github.com/Th3At0nic/fullstack-portfolio-2.0"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            fontSize: "24px",
+            color: "#000",
+            marginTop: 8,
+            display: "inline-block",
+          }}
+        >
+          <GithubOutlined />
+        </a>
       </Footer>
     </Layout>
   );
