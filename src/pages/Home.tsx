@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { useGetProfileDataQuery } from "../redux/features/data/dataManagement.api";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import { NoDataCard } from "../utils/NoDataCard";
@@ -8,10 +9,27 @@ import Experiences from "./Experiences";
 import Hero from "./Hero";
 import Projects from "./Projects";
 import Skills from "./Skills";
+import { useEffect } from "react";
 
 const Home = () => {
   const { data: profileData, isLoading: isProfileDataLoading } =
     useGetProfileDataQuery(undefined);
+  const location = useLocation();
+  const scrollTo = location.state?.scrollTo;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (scrollTo) {
+      const section = document.getElementById(scrollTo);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+          // Clear state
+          navigate(".", { replace: true, state: {} });
+        }, 100);
+      }
+    }
+  }, [scrollTo]);
 
   if (isProfileDataLoading) {
     return <LoadingSpinner />;
@@ -28,7 +46,7 @@ const Home = () => {
 
   return (
     <div>
-      <section id="hero">
+      <section id="/">
         <Hero profileData={profileData?.data} />
       </section>
 
@@ -40,7 +58,7 @@ const Home = () => {
         <Education />
       </section>
 
-      <section id="experience">
+      <section id="experiences">
         <Experiences />
       </section>
 
@@ -52,7 +70,7 @@ const Home = () => {
         <Blogs />
       </section>
 
-      <section id="courses">
+      <section id="certificates">
         <Certificates />
       </section>
 

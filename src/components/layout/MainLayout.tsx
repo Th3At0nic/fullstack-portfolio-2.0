@@ -2,13 +2,33 @@ import React, { useState } from "react";
 import { Layout, Menu, theme, Drawer, Button, MenuProps } from "antd";
 import { MenuOutlined, CloseOutlined, GithubOutlined } from "@ant-design/icons";
 import myLogo from "../../assets/myLogo1.png";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { homePaths } from "../../routes/homeRoutes";
 
 const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (sectionId: string) => {
+    if (location.pathname === "/") {
+      // Already on home, just scroll
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home with state
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
+
+    if (window.innerWidth < 768) {
+      setDrawerVisible(false);
+    }
+  };
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -23,16 +43,12 @@ const App: React.FC = () => {
     .map((item) => ({
       key: item.path,
       label: (
-        <Link
-          to={item.path}
-          onClick={() => {
-            if (window.innerWidth < 768) {
-              setDrawerVisible(false); // ✅ Only close if small screen
-            }
-          }}
+        <span
+          onClick={() => handleNavClick(item.path)}
+          className="cursor-pointer"
         >
           {item.name}
-        </Link>
+        </span>
       ),
     }));
 
