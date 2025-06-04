@@ -80,8 +80,8 @@ const Skills = () => {
                     alt={skill.title}
                     className="w-8 h-8 sm:w-5 sm:h-8 md:w-12 md:h-12 lg:w-14 rounded-xl object-contain"
                   />
-                  <div style={{ marginLeft: "15px" }}>
-                    <h4 className="text-lg font-semibold">{skill.title}</h4>
+                  <div style={{ marginLeft: "10px" }}>
+                    <h4 className="text-lg sm:text-sm font-semibold">{skill.title}</h4>
                     <p className="text-sm text-gray-400">{skill.description}</p>
                   </div>
                 </motion.div>
