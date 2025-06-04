@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-import { Button, Modal, Spin } from "antd";
+import { Button, Modal } from "antd";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  useGetProfileDataQuery,
-  useGetResumeQuery,
-} from "../redux/features/data/dataManagement.api";
+import { useGetResumeQuery } from "../redux/features/data/dataManagement.api";
 import { Eye, Send, Download } from "lucide-react";
 import { getDownloadLink } from "../utils/getDownloadLink";
 import { getDrivePreviewUrl } from "../utils/getDrivePreviewLink";
+import { TProfileData } from "../types/data.type";
 
-const Hero = () => {
-  const { data: profileData, isLoading: isProfileDataLoading } =
-    useGetProfileDataQuery(undefined);
+type HeroProps = {
+  profileData: TProfileData[];
+};
+
+const Hero = ({ profileData }: HeroProps) => {
   const { data: resume } = useGetResumeQuery(undefined);
 
   const [currentBioIndex, setCurrentBioIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const user = profileData?.data?.[0];
+  const user = profileData?.[0];
   const bioList = user?.bio || [];
 
   useEffect(() => {
@@ -27,14 +27,6 @@ const Hero = () => {
 
     return () => clearInterval(interval);
   }, [bioList.length]);
-
-  if (isProfileDataLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Spin size="large" />
-      </div>
-    );
-  }
 
   return (
     <div

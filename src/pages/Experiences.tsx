@@ -1,17 +1,24 @@
 import { CalendarOutlined } from "@ant-design/icons";
 import { useGetExperiencesQuery } from "../redux/features/data/dataManagement.api";
-import { Card, Col, Row, Spin } from "antd";
+import { Card, Col, Row } from "antd";
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Building2, History } from "lucide-react";
+import { NoDataCard } from "../utils/NoDataCard";
+import LoadingSpinner from "../utils/LoadingSpinner";
 
 const Experiences = () => {
   const { data: experienceData, isLoading } = useGetExperiencesQuery(undefined);
 
   if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!experienceData) {
     return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Spin size="large" />
-      </div>
+      <NoDataCard
+        title="No Experience to Display"
+        description="It seems there was an issue retrieving the experiences data. Please try refreshing the page or check back later."
+      />
     );
   }
 
@@ -43,7 +50,7 @@ const Experiences = () => {
                     <BriefcaseBusiness size={18} /> {exp.title}
                   </h3>
                   <p className="text-gray-700 text-sm flex items-center gap-2">
-                    <Building2 size={16}/> {exp.company} —{" "}
+                    <Building2 size={16} /> {exp.company} —{" "}
                     <span className="italic">{exp.location}</span>
                   </p>
                   <p className="text-sm text-gray-500 flex items-center gap-2">
@@ -51,7 +58,10 @@ const Experiences = () => {
                     {exp.startDate} -{" "}
                     {exp.currentlyWorking ? "Present" : exp.endDate}
                   </p>
-                  <p className="text-xs text-gray-400 flex items-center gap-2"><History size={16}/>{exp.employmentType}</p>
+                  <p className="text-xs text-gray-400 flex items-center gap-2">
+                    <History size={16} />
+                    {exp.employmentType}
+                  </p>
                 </div>
               </Card>
             </motion.div>

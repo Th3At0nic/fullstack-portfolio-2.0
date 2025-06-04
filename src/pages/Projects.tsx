@@ -2,11 +2,26 @@ import { useGetProjectsQuery } from "../redux/features/data/dataManagement.api";
 import { Card, Col, Row, Tag, Typography, Button, Space } from "antd";
 import { GithubOutlined, GlobalOutlined, ApiOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
+import LoadingSpinner from "../utils/LoadingSpinner";
+import { NoDataCard } from "../utils/NoDataCard";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Projects = () => {
-  const { data: projectsData } = useGetProjectsQuery(undefined);
+  const { data: projectsData, isLoading } = useGetProjectsQuery(undefined);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!projectsData) {
+    return (
+      <NoDataCard
+        title="No Project to Display"
+        description="It seems there was an issue retrieving the projects data. Please try refreshing the page or check back later."
+      />
+    );
+  }
 
   const projects = projectsData?.data || [];
 
