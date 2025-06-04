@@ -37,7 +37,9 @@ const App: React.FC = () => {
     }));
 
   return (
-    <Layout>
+    <Layout
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    >
       <Header
         style={{
           position: "sticky",
@@ -97,20 +99,25 @@ const App: React.FC = () => {
         <Menu mode="vertical" items={navbarItems} />
       </Drawer>
       {/* Main Content */}
-      <Content>
-        <div
-          style={{
-            padding: 24,
-            minHeight: 380,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <Outlet />
-        </div>
+      <Content
+        style={{
+          flex: 1,
+          padding: 24,
+          minHeight: "100%",
+          background: colorBgContainer,
+          borderRadius: borderRadiusLG,
+        }}
+      >
+        <Outlet />
       </Content>
 
-      <Footer style={{ textAlign: "center", padding: "20px 0" }}>
+      <Footer
+        style={{
+          backgroundColor: "#f0f2f5",
+          textAlign: "center",
+          padding: "20px 0",
+        }}
+      >
         <div>
           Designed & Built by <strong>Md Rahatul Islam</strong>
         </div>
