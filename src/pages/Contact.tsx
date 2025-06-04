@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 const Contact = () => {
   return (
     <section className="rounded-2xl max-w-4xl" style={{ margin: "auto" }}>
-      <motion.h3 className="group relative text-xl font-bold text-center cursor-pointer transition-all text-gray-400">
+      <motion.h3 className="group relative md:text-xl lg:text-xl font-bold text-center cursor-pointer transition-all text-gray-400">
         Have a project in mind?
       </motion.h3>
 
       <motion.h2
-        className="group relative text-2xl md:text-4xl text-center cursor-pointer transition-all my-8 hover:underline hover:decoration-gray-400 text-gray-400"
+        className="group relative text-xl md:text-3xl lg:text-4xl text-center cursor-pointer transition-all my-8 hover:underline hover:decoration-gray-400 text-gray-400"
         whileHover={{ scale: 1.02 }}
-        style={{ margin: "2% 0" }}
+        style={{ margin: "2%" }}
       >
         <a
           href="mailto:islammdrahatul@gmail.com"
