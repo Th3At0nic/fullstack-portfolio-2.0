@@ -17,9 +17,6 @@ const ReadBlog = () => {
 
   const blog = data?.data;
 
-  console.log("blog1: ", blog?.shortDescription);
-  console.log("blog: ", blog?.content);
-
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -75,7 +72,7 @@ const ReadBlog = () => {
           <p className="text-gray-700 text-base md:text-lg mb-6 leading-relaxed">
             {blog.shortDescription}
           </p>
-          Markdown Content
+          {/* Markdown Content */}
           <article className="prose lg:prose-xl max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-blue-600 prose-code:bg-gray-100 prose-code:rounded prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-pre:bg-gray-800 prose-pre:text-white prose-pre:rounded-xl">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
@@ -84,13 +81,13 @@ const ReadBlog = () => {
               {blog.content}
             </ReactMarkdown>
           </article>
-          {/* <article className="prose lg:prose-xl max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-blue-600 prose-code:bg-gray-100 prose-code:rounded prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-pre:bg-gray-800 prose-pre:text-white prose-pre:rounded-xl">
+          <article className="prose lg:prose-xl max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-blue-600 prose-code:bg-gray-100 prose-code:rounded prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-pre:bg-gray-800 prose-pre:text-white prose-pre:rounded-xl">
             <ReactMarkdown
               children={blog.content}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw, rehypeHighlight]}
             />
-          </article> */}
+          </article>
         </div>
       </Card>
     </motion.div>
