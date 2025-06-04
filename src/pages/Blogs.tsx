@@ -1,23 +1,30 @@
 import { useGetBlogsQuery } from "../redux/features/data/dataManagement.api";
-import { Card, Col, Row, Typography, Button, Tag, Spin } from "antd";
+import { Card, Col, Row, Typography, Button, Tag } from "antd";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BookOpenText } from "lucide-react";
+import { NoDataCard } from "../utils/NoDataCard";
+import LoadingSpinner from "../utils/LoadingSpinner";
 
 const { Title, Paragraph } = Typography;
 
 const Blogs = () => {
   const { data: blogsData, isLoading } = useGetBlogsQuery(undefined);
 
-  const blogs = blogsData?.data || [];
-
   if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!blogsData) {
     return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Spin size="large" />
-      </div>
+      <NoDataCard
+        title="No Blog to Display"
+        description="It seems there was an issue retrieving the blogs data. Please try refreshing the page or check back later."
+      />
     );
   }
+
+  const blogs = blogsData?.data || [];
 
   return (
     <div

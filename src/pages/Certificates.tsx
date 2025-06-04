@@ -1,16 +1,16 @@
 import { useGetCertificatesQuery } from "../redux/features/data/dataManagement.api";
-import { Card, Col, Modal, Row, Typography, Button,  } from "antd";
+import { Card, Col, Modal, Row, Typography, Button } from "antd";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
 import LoadingSpinner from "../utils/LoadingSpinner";
+import { NoDataCard } from "../utils/NoDataCard";
 
 const { Title, Text } = Typography;
 
 const Certificates = () => {
   const { data: certificatesResponse, isLoading } =
     useGetCertificatesQuery(undefined);
-  const certificates = certificatesResponse?.data || [];
 
   const [selectedCertificate, setSelectedCertificate] = useState<null | {
     certificateUrl: string;
@@ -20,6 +20,17 @@ const Certificates = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  if (!certificatesResponse) {
+    return (
+      <NoDataCard
+        title="No Course & Certificates to Display"
+        description="It seems there was an issue retrieving the Courses & Certificates data. Please try refreshing the page or check back later."
+      />
+    );
+  }
+
+  const certificates = certificatesResponse?.data || [];
 
   return (
     <div

@@ -1,6 +1,7 @@
 import { useGetSkillsQuery } from "../redux/features/data/dataManagement.api";
 import { motion } from "framer-motion";
-import { Spin } from "antd";
+import LoadingSpinner from "../utils/LoadingSpinner";
+import { NoDataCard } from "../utils/NoDataCard";
 
 type TSkill = {
   _id: string;
@@ -14,10 +15,15 @@ const Skills = () => {
   const { data: skillsData, isLoading } = useGetSkillsQuery(undefined);
 
   if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!skillsData) {
     return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Spin size="large" />
-      </div>
+      <NoDataCard
+        title="No Skills to Display"
+        description="It seems there was an issue retrieving the skills data. Please try refreshing the page or check back later."
+      />
     );
   }
 

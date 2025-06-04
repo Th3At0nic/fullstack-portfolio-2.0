@@ -1,3 +1,17 @@
+export type TProfileData = {
+  _id: string;
+  name: string;
+  email: string;
+  bio: string[];
+  role: "admin";
+  avatarUrl: string;
+  location: string;
+  description: string;
+  createdAt: string; // You can convert this to Date if parsed
+  updatedAt: string;
+  __v: number;
+};
+
 export type TProject = {
   _id: string;
   title: string;
