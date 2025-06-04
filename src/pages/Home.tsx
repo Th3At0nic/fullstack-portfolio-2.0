@@ -10,6 +10,7 @@ import Hero from "./Hero";
 import Projects from "./Projects";
 import Skills from "./Skills";
 import { useEffect } from "react";
+import Contact from "./Contact";
 
 const Home = () => {
   const { data: profileData, isLoading: isProfileDataLoading } =
@@ -74,9 +75,9 @@ const Home = () => {
         <Certificates />
       </section>
 
-      {/* <section id="contact">
+      <section id="contact">
         <Contact />
-      </section> */}
+      </section>
     </div>
   );
 };
