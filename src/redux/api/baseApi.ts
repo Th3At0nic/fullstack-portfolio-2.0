@@ -10,7 +10,7 @@ import { logoutUser, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api", //https://my-fullstack-portfolio-backend-lake.vercel.app
+  baseUrl: "http://localhost:5000/api", //http://localhost:5000https://my-fullstack-portfolio-backend-lake.vercel.app
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

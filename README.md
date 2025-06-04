@@ -33,7 +33,7 @@ This is the **Frontend** of my personal **Fullstack Portfolio** project, built t
 
 ## 🖼️ Live Preview
 
-> (🔗 Add link once deployed, e.g., Vercel or Netlify)
+> (🔗 [Live Portfolio Here](https://my-fullstack-portfolio-frontend.vercel.app/))
 
 ---
 
