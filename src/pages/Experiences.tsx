@@ -52,6 +52,7 @@ const Experiences = () => {
                   <p className="text-gray-700 text-sm flex flex-col sm:flex-row sm:items-center sm:gap-2">
                     <span className="flex items-center gap-2">
                       <Building2 size={16} /> {exp.company}
+                      {" - "}
                     </span>
                     <span className="italic sm:ml-0 ml-6">{exp.location}</span>
                   </p>
