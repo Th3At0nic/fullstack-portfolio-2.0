@@ -112,6 +112,12 @@ const Hero = ({ profileData }: HeroProps) => {
         <Button
           type="default"
           className="border border-blue-800 text-blue-800 px-6 py-2 rounded-md hover:bg-blue-50"
+          onClick={() => {
+            const section = document.getElementById("contact");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
         >
           <Send size={16} /> Contact Me
         </Button>
