@@ -25,7 +25,7 @@ This is the **Frontend** of my personal **Fullstack Portfolio** project, built t
 - 🎨 Fully responsive, clean and modern UI
 - ⚙️ Reusable layout using Ant Design's `Layout`
 - 🛡️ Type-safe Redux code with custom TypeScript types
-- 🚀 Deployed-ready structure.
+- 🚀 Deployed-ready structure
 
 ---
 
