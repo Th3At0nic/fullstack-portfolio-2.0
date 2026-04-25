@@ -14,7 +14,11 @@ import Contact from "./Contact";
 
 const Home = () => {
   const { data: profileData, isLoading: isProfileDataLoading } =
-    useGetProfileDataQuery(undefined);
+    useGetProfileDataQuery(undefined, {
+      refetchOnFocus: true,
+      refetchOnReconnect: true,
+      pollingInterval: 30000, // 30 sec (light polling)
+    });
   const location = useLocation();
   const scrollTo = location.state?.scrollTo;
   const navigate = useNavigate();

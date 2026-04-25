@@ -13,6 +13,7 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 const persistAuthConfig = {
   key: "auth",
@@ -40,3 +41,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
+setupListeners(store.dispatch); 
