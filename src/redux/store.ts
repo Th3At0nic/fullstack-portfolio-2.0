@@ -41,4 +41,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
-setupListeners(store.dispatch); 
+setupListeners(store.dispatch); // this is a listener for refetchOnFocus/refetchOnReconnect behaviors in RTK Query, optional but recommended
