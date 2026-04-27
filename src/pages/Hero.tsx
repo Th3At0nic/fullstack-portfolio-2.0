@@ -31,7 +31,7 @@ const Hero = ({ profileData }: HeroProps) => {
   return (
     <div
       className="text-gray-800 flex flex-col items-center"
-      style={{ margin: "5% 0" }}
+      style={{ margin: "1% 0" }}
     >
       <motion.img
         src={user?.avatarUrl}
