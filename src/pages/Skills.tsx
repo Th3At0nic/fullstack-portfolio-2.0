@@ -11,6 +11,33 @@ type TSkill = {
   iconUrl: string;
 };
 
+//this is the order of the categories to be displayed, if a category is not in this list, it will be displayed at the end
+const CATEGORY_ORDER = [
+  "Backend",
+  "Database & ORM",
+  "Caching & Async Processing",
+  "Cloud & Infrastructure",
+  "File Processing",
+  "Payments & Integrations",
+  "Frontend",
+  "Tools & Platforms",
+  "Languages",
+  "Familiar With",
+];
+
+const sortCategories = (groupedSkills: { [category: string]: TSkill[] }) => {
+  return Object.entries(groupedSkills).sort(([a], [b]) => {
+    const indexA = CATEGORY_ORDER.indexOf(a);
+    const indexB = CATEGORY_ORDER.indexOf(b);
+
+    // If category not found, push it to the end
+    const safeA = indexA === -1 ? 999 : indexA;
+    const safeB = indexB === -1 ? 999 : indexB;
+
+    return safeA - safeB;
+  });
+};
+
 const Skills = () => {
   const { data: skillsData, isLoading } = useGetSkillsQuery(undefined);
 
@@ -49,7 +76,7 @@ const Skills = () => {
 
       <div style={{ margin: "2% 0" }}>
         {/* Categories */}
-        {Object.entries(groupedSkills).map(([category, skills]) => (
+        {sortCategories(groupedSkills).map(([category, skills]) => (
           <div key={category} style={{ marginBottom: "3%" }}>
             <div>
               <motion.h3
@@ -81,7 +108,9 @@ const Skills = () => {
                     className="w-8 h-8 sm:w-5 sm:h-8 md:w-12 md:h-12 lg:w-14 rounded-xl object-contain"
                   />
                   <div style={{ marginLeft: "10px" }}>
-                    <h4 className="text-lg sm:text-sm font-semibold">{skill.title}</h4>
+                    <h4 className="text-lg sm:text-sm font-semibold">
+                      {skill.title}
+                    </h4>
                     <p className="text-sm text-gray-400">{skill.description}</p>
                   </div>
                 </motion.div>
