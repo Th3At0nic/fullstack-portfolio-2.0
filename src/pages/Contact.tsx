@@ -29,7 +29,7 @@ const Contact = () => {
       <div className="flex justify-center" style={{ margin: "2%" }}>
         <motion.div className="flex gap-5">
           <a
-            href="https://www.facebook.com/th3pri/"
+            href="https://www.facebook.com/th3at0nic/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#9CA3AF" }}
