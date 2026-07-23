@@ -37,10 +37,10 @@ const Home = () => {
   return (
     <div>
       <section id="/">
-        {/* <Hero
-          // isProfileDataLoading={isProfileDataLoading}
-          // profileData={profileData?.data}
-        /> */}
+        <Hero
+          isProfileDataLoading={isProfileDataLoading}
+          profileData={profileData?.data}
+        />
       </section>
 
       <section id="skills">
