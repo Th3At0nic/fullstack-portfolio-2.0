@@ -6,12 +6,15 @@ import { Eye, Send, Download } from "lucide-react";
 import { getDownloadLink } from "../utils/getDownloadLink";
 import { getDrivePreviewUrl } from "../utils/getDrivePreviewLink";
 import { TProfileData } from "../types/data.type";
+import LoadingSpinner from "../utils/LoadingSpinner";
+import { NoDataCard } from "../utils/NoDataCard";
 
 type HeroProps = {
-  profileData: TProfileData[];
+  profileData?: TProfileData[];
+  isProfileDataLoading: boolean;
 };
 
-const Hero = ({ profileData }: HeroProps) => {
+const Hero = ({ profileData, isProfileDataLoading }: HeroProps) => {
   const { data: resume } = useGetResumeQuery(undefined);
 
   const [currentBioIndex, setCurrentBioIndex] = useState(0);
@@ -19,14 +22,34 @@ const Hero = ({ profileData }: HeroProps) => {
 
   const user = profileData?.[0];
   const bioList = user?.bio || [];
+  const currentBio = bioList.length
+    ? bioList[currentBioIndex % bioList.length]
+    : "";
 
   useEffect(() => {
+    if (!bioList.length) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setCurrentBioIndex((prevIndex) => (prevIndex + 1) % bioList.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [bioList.length]);
+
+  if (isProfileDataLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!profileData?.length) {
+    return (
+      <NoDataCard
+        title="Unable to Load Data"
+        description="Make sure you’re connected to the internet, or try refreshing the page."
+      />
+    );
+  }
 
   return (
     <div
@@ -52,16 +75,18 @@ const Hero = ({ profileData }: HeroProps) => {
       </motion.h1>
 
       <AnimatePresence mode="wait">
-        <motion.p
-          key={bioList[currentBioIndex]}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5 }}
-          className="text-lg lg:text-2xl md:text-xl text-gray-700 font-bold h-16 align-middle text-center"
-        >
-          {bioList[currentBioIndex]}
-        </motion.p>
+        {bioList.length > 0 && (
+          <motion.p
+            key={currentBio}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="text-lg lg:text-2xl md:text-xl text-gray-700 font-bold h-16 align-middle text-center"
+          >
+            {currentBio}
+          </motion.p>
+        )}
       </AnimatePresence>
 
       <motion.p

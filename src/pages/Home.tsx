@@ -1,7 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGetProfileDataQuery } from "../redux/features/data/dataManagement.api";
-import LoadingSpinner from "../utils/LoadingSpinner";
-import { NoDataCard } from "../utils/NoDataCard";
 import Blogs from "./Blogs";
 import Certificates from "./Certificates";
 import Education from "./Education";
@@ -36,23 +34,13 @@ const Home = () => {
     }
   }, [scrollTo, navigate]);
 
-  if (isProfileDataLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (!profileData) {
-    return (
-      <NoDataCard
-        title="Unable to Load Data"
-        description="Make sure you’re connected to the internet, or try refreshing the page."
-      />
-    );
-  }
-
   return (
     <div>
       <section id="/">
-        <Hero profileData={profileData?.data} />
+        {/* <Hero
+          // isProfileDataLoading={isProfileDataLoading}
+          // profileData={profileData?.data}
+        /> */}
       </section>
 
       <section id="skills">

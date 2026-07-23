@@ -1,7 +1,7 @@
 import { useGetSkillsQuery } from "../redux/features/data/dataManagement.api";
 import { motion } from "framer-motion";
-import LoadingSpinner from "../utils/LoadingSpinner";
 import { NoDataCard } from "../utils/NoDataCard";
+// import SectionSkeleton from "../components/SectionSkeleton";
 
 type TSkill = {
   _id: string;
@@ -42,7 +42,31 @@ const Skills = () => {
   const { data: skillsData, isLoading } = useGetSkillsQuery(undefined);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    // return (
+    //   <SectionSkeleton titleWidthClassName="w-32">
+    //     <div className="space-y-8">
+    //       {Array.from({ length: 3 }).map((_, categoryIndex) => (
+    //         <div key={categoryIndex} className="space-y-4">
+    //           <div className="h-6 w-48 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+    //           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-1 md:gap-3">
+    //             {Array.from({ length: 4 }).map((__, skillIndex) => (
+    //               <div
+    //                 key={skillIndex}
+    //                 className="flex items-center rounded-xl border border-slate-200 bg-white/70 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/60"
+    //               >
+    //                 <div className="h-10 w-10 rounded-xl bg-slate-200/80 dark:bg-slate-700/60" />
+    //                 <div className="ml-3 flex-1 space-y-2">
+    //                   <div className="h-4 w-3/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+    //                   <div className="h-3 w-4/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+    //                 </div>
+    //               </div>
+    //             ))}
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
+    //   </SectionSkeleton>
+    // );
   }
 
   if (!skillsData) {
