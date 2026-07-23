@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
 import { NoDataCard } from "../utils/NoDataCard";
-// import SectionSkeleton from "../components/SectionSkeleton";
+import SectionSkeleton from "../components/SectionSkeleton";
 
 const { Title, Text } = Typography;
 
@@ -18,26 +18,26 @@ const Certificates = () => {
   }>(null);
 
   if (isLoading) {
-    // return (
-    //   <SectionSkeleton titleWidthClassName="w-64">
-    //     <Row gutter={[24, 24]} justify="center">
-    //       {Array.from({ length: 4 }).map((_, index) => (
-    //         <Col xs={24} sm={12} md={8} lg={6} key={index}>
-    //           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white/70 shadow-sm dark:border-slate-700 dark:bg-slate-800/60">
-    //             <div className="h-48 bg-slate-200/80 dark:bg-slate-700/60" />
-    //             <div className="space-y-4 p-5">
-    //               <div className="h-6 w-4/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
-    //               <div className="h-4 w-2/3 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
-    //               <div className="h-4 w-1/2 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
-    //               <div className="h-4 w-3/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
-    //               <div className="mx-auto h-9 w-40 rounded-lg bg-slate-200/80 dark:bg-slate-700/60" />
-    //             </div>
-    //           </div>
-    //         </Col>
-    //       ))}
-    //     </Row>
-    //   </SectionSkeleton>
-    // );
+    return (
+      <SectionSkeleton titleWidthClassName="w-64">
+        <Row gutter={[24, 24]} justify="center">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Col xs={24} sm={12} md={8} lg={6} key={index}>
+              <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white/70 shadow-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <div className="h-48 bg-slate-200/80 dark:bg-slate-700/60" />
+                <div className="space-y-4 p-5">
+                  <div className="h-6 w-4/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-2/3 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-1/2 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-3/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="mx-auto h-9 w-40 rounded-lg bg-slate-200/80 dark:bg-slate-700/60" />
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </SectionSkeleton>
+    );
   }
 
   if (!certificatesResponse) {
