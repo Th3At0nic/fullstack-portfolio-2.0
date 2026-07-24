@@ -4,7 +4,7 @@ import { GithubOutlined, GlobalOutlined, ApiOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { NoDataCard } from "../utils/NoDataCard";
 import SectionSkeleton from "../components/SectionSkeleton";
-// import FeaturedProjectCard from "../components/projects/FeaturedProjectCard";
+import FeaturedProjectCard from "../components/projects/FeaturedProjectCard";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -57,8 +57,8 @@ const Projects = () => {
   }
 
   const projects = projectsData?.data || [];
-  // const featuredProjects = projects.filter((project) => project.featured);
-  // const standardProjects = projects.filter((project) => !project.featured);
+  const featuredProjects = projects.filter((project) => project.featured);
+  const standardProjects = projects.filter((project) => !project.featured);
 
   return (
     <div
@@ -76,7 +76,7 @@ const Projects = () => {
         </motion.h2>
       </div>
 
-      {/* {featuredProjects.length > 0 && (
+      {featuredProjects.length > 0 && (
         <Row gutter={[24, 24]}>
           {featuredProjects.map((project) => (
             <FeaturedProjectCard key={project._id} project={project} />
@@ -85,91 +85,94 @@ const Projects = () => {
       )}
 
       {standardProjects.length > 0 && (
-        <Row gutter={[24, 24]} style={{ marginTop: featuredProjects.length ? 24 : 0 }}>
-          {standardProjects.map((project) => ( */}
-          <Col key={project._id} xs={24} sm={24} md={12} lg={8} xl={8}>
-            <Card
-              hoverable
-              cover={
-                <img
-                  alt={project.title}
-                  src={project.thumbnail}
-                  style={{
-                    height: 200,
-                    objectFit: "cover",
-                  }}
-                />
-              }
-              style={{ borderRadius: 12 }}
-            >
-              <Title level={4}>{project.title}</Title>
+        <Row
+          gutter={[24, 24]}
+          style={{ marginTop: featuredProjects.length ? 24 : 0 }}
+        >
+          {standardProjects.map((project) => (
+            <Col key={project._id} xs={24} sm={24} md={12} lg={8} xl={8}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt={project.title}
+                    src={project.thumbnail}
+                    style={{
+                      height: 200,
+                      objectFit: "cover",
+                    }}
+                  />
+                }
+                style={{ borderRadius: 12 }}
+              >
+                <Title level={4}>{project.title}</Title>
 
-              <Paragraph ellipsis={{ rows: 3, expandable: true }}>
-                {project.description}
-              </Paragraph>
+                <Paragraph ellipsis={{ rows: 3, expandable: true }}>
+                  {project.description}
+                </Paragraph>
 
-              <div style={{ marginBottom: "12px" }}>
-                <Text strong>Technologies:</Text>
-                <div style={{ marginTop: 8 }}>
-                  {project.technologies.map((tech: string) => (
-                    <Tag color="blue" key={tech}>
-                      {tech}
-                    </Tag>
-                  ))}
+                <div style={{ marginBottom: "12px" }}>
+                  <Text strong>Technologies:</Text>
+                  <div style={{ marginTop: 8 }}>
+                    {project.technologies.map((tech: string) => (
+                      <Tag color="blue" key={tech}>
+                        {tech}
+                      </Tag>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div style={{ marginBottom: "12px" }}>
-                <Text strong>Deployed On:</Text>{" "}
-                <Tag color="green">{project.deploymentPlatform}</Tag>
-              </div>
+                <div style={{ marginBottom: "12px" }}>
+                  <Text strong>Deployed On:</Text>{" "}
+                  <Tag color="green">{project.deploymentPlatform}</Tag>
+                </div>
 
-              {/* {!project.isConfidential && (
-                <Space wrap size="small">
-                  {project.liveUrl && (
-                    <Button
-                      icon={<GlobalOutlined />}
-                      type="primary"
-                      href={project.liveUrl}
-                      target="_blank"
-                    >
-                      Live Site
-                    </Button>
-                  )}
-                  {project.frontendRepo && (
-                    <Button
-                      icon={<GithubOutlined />}
-                      href={project.frontendRepo}
-                      target="_blank"
-                    >
-                      Frontend Code
-                    </Button>
-                  )}
-                  {project.backendRepo && (
-                    <Button
-                      icon={<GithubOutlined />}
-                      href={project.backendRepo}
-                      target="_blank"
-                    >
-                      Backend Code
-                    </Button>
-                  )}
-                  {project.liveBackendUrl && (
-                    <Button
-                      icon={<ApiOutlined />}
-                      href={project.liveBackendUrl}
-                      target="_blank"
-                    >
-                      Backend URL
-                    </Button>
-                  )}
-                </Space>
-              )} */}
-            </Card>
-          </Col>
-          {/* ))}
+                {!project.isConfidential && (
+                  <Space wrap size="small">
+                    {project.liveUrl && (
+                      <Button
+                        icon={<GlobalOutlined />}
+                        type="primary"
+                        href={project.liveUrl}
+                        target="_blank"
+                      >
+                        Live Site
+                      </Button>
+                    )}
+                    {project.frontendRepo && (
+                      <Button
+                        icon={<GithubOutlined />}
+                        href={project.frontendRepo}
+                        target="_blank"
+                      >
+                        Frontend Code
+                      </Button>
+                    )}
+                    {project.backendRepo && (
+                      <Button
+                        icon={<GithubOutlined />}
+                        href={project.backendRepo}
+                        target="_blank"
+                      >
+                        Backend Code
+                      </Button>
+                    )}
+                    {project.liveBackendUrl && (
+                      <Button
+                        icon={<ApiOutlined />}
+                        href={project.liveBackendUrl}
+                        target="_blank"
+                      >
+                        Backend URL
+                      </Button>
+                    )}
+                  </Space>
+                )}
+              </Card>
+            </Col>
+          ))}
         </Row>
-      )} */}
+      )}
     </div>
   );
 };
