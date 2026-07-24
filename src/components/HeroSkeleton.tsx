@@ -1,6 +1,6 @@
 const HeroSkeleton = () => {
   return (
-    <div className="flex flex-col items-center text-gray-800" style={{ margin: "1% 0 5% 0" }}>
+    <div className="flex flex-col gap-5 items-center text-gray-800" style={{ margin: "1% 0 5% 0" }}>
       <div className="mb-6 h-40 w-40 animate-pulse rounded-full bg-slate-200/80 md:h-52 md:w-52 dark:bg-slate-700/60" />
 
       <div className="mb-4 h-10 w-64 animate-pulse rounded-full bg-slate-200/80 md:w-96 dark:bg-slate-700/60" />
