@@ -12,7 +12,7 @@ const SectionSkeleton = ({
   titleWidthClassName = "w-56",
 }: SectionSkeletonProps) => {
   return (
-    <div className={`rounded-2xl max-w-7xl mx-auto ${className}`.trim()}>
+    <div className={`rounded-2xl max-w-7xl mx-auto mt-16 mb-16 ${className}`.trim()}>
       <div className="animate-pulse">
         <div className="mb-10 flex justify-center">
           <div
