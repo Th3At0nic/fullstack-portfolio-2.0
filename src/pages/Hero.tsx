@@ -6,7 +6,7 @@ import { Eye, Send, Download } from "lucide-react";
 import { getDownloadLink } from "../utils/getDownloadLink";
 import { getDrivePreviewUrl } from "../utils/getDrivePreviewLink";
 import { TProfileData } from "../types/data.type";
-import LoadingSpinner from "../utils/LoadingSpinner";
+// import HeroSkeleton from "../components/HeroSkeleton";
 import { NoDataCard } from "../utils/NoDataCard";
 
 type HeroProps = {
@@ -38,18 +38,18 @@ const Hero = ({ profileData, isProfileDataLoading }: HeroProps) => {
     return () => clearInterval(interval);
   }, [bioList.length]);
 
-  if (isProfileDataLoading) {
-    return <LoadingSpinner />;
-  }
+  // if (isProfileDataLoading) {
+  //   return <HeroSkeleton />;
+  // }
 
-  if (!profileData?.length) {
-    return (
-      <NoDataCard
-        title="Unable to Load Data"
-        description="Make sure you’re connected to the internet, or try refreshing the page."
-      />
-    );
-  }
+  // if (!profileData?.length) {
+  //   return (
+  //     <NoDataCard
+  //       title="Unable to Load Data"
+  //       description="Make sure you’re connected to the internet, or try refreshing the page."
+  //     />
+  //   );
+  // }
 
   return (
     <div
