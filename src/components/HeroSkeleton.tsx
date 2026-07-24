@@ -10,7 +10,6 @@ const HeroSkeleton = () => {
 
       <div className="mb-4 flex flex-col items-center gap-3">
         <div className="h-5 w-72 animate-pulse rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
-        {/* <div className="h-5 w-56 animate-pulse rounded-full bg-slate-200/80 dark:bg-slate-700/60" /> */}
       </div>
 
       <div className="mt-6 flex w-full max-w-6xl flex-col items-center gap-4 px-4">
