@@ -17,6 +17,11 @@ export type TProject = {
   title: string;
   thumbnail: string;
   description: string;
+  // type?: "personal" | "company";
+  // isConfidential?: boolean;
+  // role?: string;
+  // impactMetrics?: string[];
+  // architectureNotes?: string;
   technologies: string[];
   liveUrl: string;
   frontendRepo: string;
