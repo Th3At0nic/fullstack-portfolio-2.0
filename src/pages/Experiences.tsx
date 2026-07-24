@@ -4,13 +4,31 @@ import { Card, Col, Row } from "antd";
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Building2, History } from "lucide-react";
 import { NoDataCard } from "../utils/NoDataCard";
-import LoadingSpinner from "../utils/LoadingSpinner";
+import SectionSkeleton from "../components/SectionSkeleton";
 
 const Experiences = () => {
   const { data: experienceData, isLoading } = useGetExperiencesQuery(undefined);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return (
+      <SectionSkeleton titleWidthClassName="w-40">
+        <Row gutter={[24, 24]} justify="center">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <Col xs={24} sm={24} md={12} lg={8} key={index}>
+              <div className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <div className="space-y-4">
+                  <div className="h-6 w-3/4 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-2/3 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-1/2 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-3/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="h-4 w-1/3 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </SectionSkeleton>
+    );
   }
 
   if (!experienceData) {

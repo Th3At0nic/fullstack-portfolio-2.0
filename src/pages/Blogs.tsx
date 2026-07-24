@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BookOpenText } from "lucide-react";
 import { NoDataCard } from "../utils/NoDataCard";
-import LoadingSpinner from "../utils/LoadingSpinner";
+import SectionSkeleton from "../components/SectionSkeleton";
 
 const { Title, Paragraph } = Typography;
 
@@ -12,7 +12,32 @@ const Blogs = () => {
   const { data: blogsData, isLoading } = useGetBlogsQuery(undefined);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return (
+      <SectionSkeleton titleWidthClassName="w-40">
+        <Row gutter={[24, 24]} justify="center">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Col key={index} xs={24} sm={24} md={12} lg={8} xl={6}>
+              <div className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white/70 shadow-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <div className="h-48 bg-slate-200/80 dark:bg-slate-700/60" />
+                <div className="space-y-4 p-5">
+                  <div className="h-6 w-4/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="space-y-2">
+                    <div className="h-4 w-full rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-4 w-5/6 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-4 w-3/5 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <div className="h-6 w-20 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-6 w-20 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  </div>
+                  <div className="ml-auto h-10 w-28 rounded-lg bg-slate-200/80 dark:bg-slate-700/60" />
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </SectionSkeleton>
+    );
   }
 
   if (!blogsData) {

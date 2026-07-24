@@ -2,8 +2,8 @@ import { useGetProjectsQuery } from "../redux/features/data/dataManagement.api";
 import { Card, Col, Row, Tag, Typography, Button, Space } from "antd";
 import { GithubOutlined, GlobalOutlined, ApiOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
-import LoadingSpinner from "../utils/LoadingSpinner";
 import { NoDataCard } from "../utils/NoDataCard";
+import SectionSkeleton from "../components/SectionSkeleton";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -11,7 +11,39 @@ const Projects = () => {
   const { data: projectsData, isLoading } = useGetProjectsQuery(undefined);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return (
+      <SectionSkeleton titleWidthClassName="w-36">
+        <Row gutter={[24, 24]}>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <Col key={index} xs={24} sm={24} md={12} lg={8} xl={8}>
+              <div className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white/70 shadow-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <div className="h-52 bg-slate-200/80 dark:bg-slate-700/60" />
+                <div className="space-y-4 p-6">
+                  <div className="h-6 w-3/4 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  <div className="space-y-2">
+                    <div className="h-4 w-full rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-4 w-5/6 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-4 w-2/3 rounded-full bg-slate-200/80 dark:bg-slate-700/60" />
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {Array.from({ length: 3 }).map((__, tagIndex) => (
+                      <div
+                        key={tagIndex}
+                        className="h-6 w-20 rounded-full bg-slate-200/80 dark:bg-slate-700/60"
+                      />
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <div className="h-9 w-24 rounded-lg bg-slate-200/80 dark:bg-slate-700/60" />
+                    <div className="h-9 w-28 rounded-lg bg-slate-200/80 dark:bg-slate-700/60" />
+                  </div>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </SectionSkeleton>
+    );
   }
 
   if (!projectsData) {
