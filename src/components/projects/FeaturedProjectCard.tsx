@@ -1,5 +1,5 @@
 import { Button, Card, Collapse, Col, Space, Tag, Typography } from "antd";
-import { ApiOutlined, GithubOutlined, GlobalOutlined, LockOutlined } from "@ant-design/icons";
+import { ApiOutlined, GithubOutlined, GlobalOutlined, LockOutlined, TrophyOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import type { TProject } from "../../types/data.type";
 
@@ -25,6 +25,40 @@ const parseMetricText = (metric: string) => {
     leading,
     trailing: trailing.trim(),
   };
+};
+
+const renderArchitectureBlocks = (notes: string) => {
+  const paragraphs = splitArchitectureNotes(notes);
+
+  const labelRegex = /^([A-Za-z0-9 &/]{2,40}):\s*(.*)$/;
+
+  return (
+    <div>
+      {paragraphs.map((p, idx) => {
+        const m = p.match(labelRegex);
+
+        if (m) {
+          const label = m[1].trim();
+          const rest = m[2].trim();
+
+          return (
+            <div key={idx} className="mt-5">
+              <div className="text-base font-semibold text-slate-900">{label}</div>
+              {rest ? (
+                <p className="mt-1 m-0 text-base leading-relaxed text-slate-700">{rest}</p>
+              ) : null}
+            </div>
+          );
+        }
+
+        return (
+          <p key={idx} className="mt-3 m-0 text-base leading-relaxed text-slate-700">
+            {p}
+          </p>
+        );
+      })}
+    </div>
+  );
 };
 
 type FeaturedProjectCardProps = {
@@ -78,38 +112,50 @@ const FeaturedProjectCard = ({ project }: FeaturedProjectCardProps) => {
             </Paragraph>
 
             {project.impactMetrics?.length ? (
-              <div className="space-y-4">
-                <div className="text-xs font-medium uppercase tracking-[0.24em] text-slate-500">
-                  IMPACT
-                </div>
-                {project.impactMetrics.map((metric, index) => (
-                  <div
-                    key={`${metric}-${index}`}
-                    className="border-l-2 border-blue-800 pl-4 py-1"
-                  >
-                    {(() => {
-                      const parsedMetric = parseMetricText(metric);
+              <Collapse
+                ghost
+                items={[
+                  {
+                    key: "impact",
+                    label: (
+                      <span className="flex items-center gap-2">
+                        <TrophyOutlined /> Impact Metrics
+                      </span>
+                    ),
+                    children: (
+                      <div className="space-y-4 pt-2">
+                        {project.impactMetrics.map((metric, index) => (
+                          <div
+                            key={`${metric}-${index}`}
+                            className="border-l-2 border-blue-800 pl-4 py-1"
+                          >
+                            {(() => {
+                              const parsedMetric = parseMetricText(metric);
 
-                      if (!parsedMetric) {
-                        return (
-                          <p className="m-0 text-base leading-relaxed text-slate-800">
-                            {metric}
-                          </p>
-                        );
-                      }
+                              if (!parsedMetric) {
+                                return (
+                                  <p className="m-0 text-base leading-relaxed text-slate-800">
+                                    {metric}
+                                  </p>
+                                );
+                              }
 
-                      return (
-                        <p className="m-0 text-base leading-relaxed text-slate-800">
-                          <span className="text-lg font-semibold">
-                            {parsedMetric.leading}
-                          </span>{" "}
-                          {parsedMetric.trailing || null}
-                        </p>
-                      );
-                    })()}
-                  </div>
-                ))}
-              </div>
+                              return (
+                                <p className="m-0 text-base leading-relaxed text-slate-800">
+                                  <span className="text-lg font-semibold">
+                                    {parsedMetric.leading}
+                                  </span>{" "}
+                                  {parsedMetric.trailing || null}
+                                </p>
+                              );
+                            })()}
+                          </div>
+                        ))}
+                      </div>
+                    ),
+                  },
+                ]}
+              />
             ) : null}
 
             {project.architectureNotes ? (
@@ -119,20 +165,7 @@ const FeaturedProjectCard = ({ project }: FeaturedProjectCardProps) => {
                   {
                     key: "architecture",
                     label: "Architecture & Key Decisions",
-                    children: (
-                      <div className="space-y-3">
-                        {splitArchitectureNotes(project.architectureNotes).map(
-                          (paragraph, index) => (
-                            <p
-                              key={`${index}-${paragraph}`}
-                              className="m-0 text-base leading-relaxed text-slate-700"
-                            >
-                              {paragraph}
-                            </p>
-                          ),
-                        )}
-                      </div>
-                    ),
+                    children: renderArchitectureBlocks(project.architectureNotes),
                   },
                 ]}
               />
