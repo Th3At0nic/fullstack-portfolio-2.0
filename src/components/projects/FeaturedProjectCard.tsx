@@ -4,7 +4,7 @@ import {
   GithubOutlined,
   GlobalOutlined,
   LockOutlined,
-  PartitionOutlined,
+  SettingOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
 import { motion } from "framer-motion";
@@ -180,7 +180,7 @@ const FeaturedProjectCard = ({ project }: FeaturedProjectCardProps) => {
                     key: "architecture",
                     label: (
                       <span className="flex items-center gap-2">
-                        <PartitionOutlined /> Architecture & Key Decisions
+                        <SettingOutlined /> Architecture & Key Decisions
                       </span>
                     ),
                     children: renderArchitectureBlocks(
