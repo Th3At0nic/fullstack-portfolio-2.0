@@ -1,5 +1,12 @@
 import { Button, Card, Collapse, Col, Space, Tag, Typography } from "antd";
-import { ApiOutlined, GithubOutlined, GlobalOutlined, LockOutlined, TrophyOutlined } from "@ant-design/icons";
+import {
+  ApiOutlined,
+  GithubOutlined,
+  GlobalOutlined,
+  LockOutlined,
+  SettingOutlined,
+  TrophyOutlined,
+} from "@ant-design/icons";
 import { motion } from "framer-motion";
 import type { TProject } from "../../types/data.type";
 
@@ -43,16 +50,23 @@ const renderArchitectureBlocks = (notes: string) => {
 
           return (
             <div key={idx} className="mt-5">
-              <div className="text-base font-semibold text-slate-900">{label}</div>
+              <div className="text-base font-semibold text-slate-900">
+                {label}
+              </div>
               {rest ? (
-                <p className="mt-1 m-0 text-base leading-relaxed text-slate-700">{rest}</p>
+                <p className="mt-1 m-0 text-base leading-relaxed text-slate-700">
+                  {rest}
+                </p>
               ) : null}
             </div>
           );
         }
 
         return (
-          <p key={idx} className="mt-3 m-0 text-base leading-relaxed text-slate-700">
+          <p
+            key={idx}
+            className="mt-3 m-0 text-base leading-relaxed text-slate-700"
+          >
             {p}
           </p>
         );
@@ -164,8 +178,14 @@ const FeaturedProjectCard = ({ project }: FeaturedProjectCardProps) => {
                 items={[
                   {
                     key: "architecture",
-                    label: "Architecture & Key Decisions",
-                    children: renderArchitectureBlocks(project.architectureNotes),
+                    label: (
+                      <span className="flex items-center gap-2">
+                        <SettingOutlined /> Architecture & Key Decisions
+                      </span>
+                    ),
+                    children: renderArchitectureBlocks(
+                      project.architectureNotes,
+                    ),
                   },
                 ]}
               />
