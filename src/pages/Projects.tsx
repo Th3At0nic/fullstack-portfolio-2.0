@@ -16,6 +16,21 @@ const Projects = () => {
     title: string;
   } | null>(null);
 
+  const handleThumbnailClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement | null;
+
+    if (!target || target.tagName !== "IMG") {
+      return;
+    }
+
+    const imageElement = target as HTMLImageElement;
+
+    setPreviewImage({
+      src: imageElement.currentSrc || imageElement.src,
+      title: imageElement.alt || "Project thumbnail",
+    });
+  };
+
   if (isLoading) {
     return (
       <SectionSkeleton titleWidthClassName="w-36">
@@ -84,7 +99,9 @@ const Projects = () => {
       {featuredProjects.length > 0 && (
         <Row gutter={[24, 24]}>
           {featuredProjects.map((project) => (
-            <FeaturedProjectCard key={project._id} project={project} />
+            <div key={project._id} onClick={handleThumbnailClick} className="w-full">
+              <FeaturedProjectCard project={project} />
+            </div>
           ))}
         </Row>
       )}
