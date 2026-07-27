@@ -196,7 +196,7 @@ const Projects = () => {
         onCancel={() => setPreviewImage(null)}
         footer={null}
         centered
-        width={900}
+        width={1300}
         styles={{
           mask: {
             backdropFilter: "blur(8px)",
