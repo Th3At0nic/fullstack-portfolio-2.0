@@ -1,5 +1,6 @@
 import { useGetProjectsQuery } from "../redux/features/data/dataManagement.api";
-import { Card, Col, Row, Tag, Typography, Button, Space } from "antd";
+import { useState } from "react";
+import { Card, Col, Row, Tag, Typography, Button, Space, Modal } from "antd";
 import { GithubOutlined, GlobalOutlined, ApiOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { NoDataCard } from "../utils/NoDataCard";
@@ -10,6 +11,10 @@ const { Title, Paragraph, Text } = Typography;
 
 const Projects = () => {
   const { data: projectsData, isLoading } = useGetProjectsQuery(undefined);
+  const [previewImage, setPreviewImage] = useState<{
+    src: string;
+    title: string;
+  } | null>(null);
 
   if (isLoading) {
     return (
@@ -94,14 +99,26 @@ const Projects = () => {
               <Card
                 hoverable
                 cover={
-                  <img
-                    alt={project.title}
-                    src={project.thumbnail}
-                    style={{
-                      height: 200,
-                      objectFit: "cover",
-                    }}
-                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPreviewImage({
+                        src: project.thumbnail,
+                        title: project.title,
+                      })
+                    }
+                    className="block w-full cursor-zoom-in border-0 bg-transparent p-0 text-left"
+                    aria-label={`Preview ${project.title} thumbnail`}
+                  >
+                    <img
+                      alt={project.title}
+                      src={project.thumbnail}
+                      style={{
+                        height: 200,
+                        objectFit: "cover",
+                      }}
+                    />
+                  </button>
                 }
                 style={{ borderRadius: 12 }}
               >
@@ -173,6 +190,34 @@ const Projects = () => {
           ))}
         </Row>
       )}
+
+      <Modal
+        open={!!previewImage}
+        onCancel={() => setPreviewImage(null)}
+        footer={null}
+        centered
+        width={900}
+        styles={{
+          mask: {
+            backdropFilter: "blur(8px)",
+          },
+          body: {
+            padding: 0,
+            background: "transparent",
+          },
+        }}
+      >
+        {previewImage ? (
+          <div className="overflow-hidden rounded-lg bg-black">
+            <img
+              src={previewImage.src}
+              alt={previewImage.title}
+              className="h-auto w-full object-contain"
+              style={{ maxHeight: "80vh" }}
+            />
+          </div>
+        ) : null}
+      </Modal>
     </div>
   );
 };
