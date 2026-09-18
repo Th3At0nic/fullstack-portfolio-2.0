@@ -37,7 +37,8 @@ const parseMetricText = (metric: string) => {
 const renderArchitectureBlocks = (notes: string) => {
   const paragraphs = splitArchitectureNotes(notes);
 
-  const labelRegex = /^([A-Za-z0-9 &/]{2,40}):\s*(.*)$/;
+  // const labelRegex = /^([A-Za-z0-9 &/]{2,40}):\s*(.*)$/; //works normally expcept any special character before colon
+  const labelRegex = /^(.+?):\s*(.*)$/; // any special cahacter before : is allowed
 
   return (
     <div>
